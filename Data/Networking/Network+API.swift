@@ -8,17 +8,19 @@
 import Alamofire
 
 struct API {
-    enum ExercisesViewController {
+    enum Wger {
         case exercises
         case exerciseImage(isMain: Bool, exerciseBase: Int)
+        case exerciseInfo(exerciseId: Int)
+        case variation(variationId: Int)
     }
 }
 
-extension API.ExercisesViewController: NetworkUrl {
+extension API.Wger: NetworkUrl {
     
     var method: HTTPMethod {
         switch self {
-        case .exercises, .exerciseImage :
+        case .exercises, .exerciseImage, .exerciseInfo, .variation :
             return .get
         }
     }
@@ -29,6 +31,10 @@ extension API.ExercisesViewController: NetworkUrl {
             return "/exercise/"
         case .exerciseImage:
             return "/exerciseimage/"
+        case .exerciseInfo(let exerciseId):
+            return "/exerciseinfo/\(exerciseId)"
+        case .variation(let variationId):
+            return "/exercise/\(variationId)"
         }
     }
     
@@ -42,6 +48,8 @@ extension API.ExercisesViewController: NetworkUrl {
             return nil
         case .exerciseImage(let isMain, let exerciseBase):
             return ["is_main":isMain, "exercise_base":exerciseBase]
+        case .exerciseInfo, .variation:
+            return nil
         }
     }
     

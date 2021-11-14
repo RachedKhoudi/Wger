@@ -23,7 +23,7 @@ protocol ExercisesViewModelProtocol {
     func fetshExercises()
 }
 
-class ExercisesViewModel: ExercisesViewModelProtocol {
+class ExercisesViewModel: BaseViewModel, ExercisesViewModelProtocol {
     var disposeBag: DisposeBag = DisposeBag()
     var errorObserver: PublishSubject<Error> = PublishSubject()
     var stateNotifier: PublishSubject<Void> = PublishSubject()

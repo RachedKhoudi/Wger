@@ -28,6 +28,18 @@ final class AppAssembly: Assembly {
         container.register(ExercisesViewModelProtocol.self) { resolver in
             ExercisesViewModel(exercisesUseCase: resolver.resolve(ExercisesUseCaseProtocol.self)!)
         }
+        
+        container.register(ExerciseDetailsRepositoryProtocol.self) { resolver in
+            ExerciseDetailsRepository(networkManager: resolver.resolve(NetworkingManagerProtocol.self)!)
+        }.inObjectScope(.container)
+        
+        container.register(ExerciseDetailsUseCaseProtocol.self) { resolver in
+            ExerciseDetailsUseCase(exerciseDetailsRepository: resolver.resolve(ExerciseDetailsRepositoryProtocol.self)!)
+        }
+        
+        container.register(ExerciseDetailsViewModelProtocol.self) { resolver in
+            ExerciseDetailsViewModel(exerciseDetailsUseCase: resolver.resolve(ExerciseDetailsUseCaseProtocol.self)!)
+        }
     }
 }
 

@@ -10,7 +10,7 @@ import Alamofire
 
 // MARK: - Networking Manager Protocol
 protocol NetworkingManagerProtocol {
-    func request<T: Codable>(source: API.ExercisesViewController, ofType: T.Type) -> Single<T>
+    func request<T: Codable>(source: API.Wger, ofType: T.Type) -> Single<T>
 }
 
 // MARK: - Networking Manager
@@ -23,7 +23,7 @@ class NetworkingManager: NetworkingManagerProtocol {
         session = Alamofire.Session(configuration: configuration)
     }
     
-    func request<T: Codable>(source: API.ExercisesViewController, ofType: T.Type) -> Single<T> {
+    func request<T: Codable>(source: API.Wger, ofType: T.Type) -> Single<T> {
         do {
             
             let urlRequest = try getRequestAPI(source: source).asURLRequest()
@@ -67,12 +67,16 @@ class NetworkingManager: NetworkingManagerProtocol {
         }
     }
     
-    private func getRequestAPI(source: API.ExercisesViewController) -> API.ExercisesViewController {
+    private func getRequestAPI(source: API.Wger) -> API.Wger {
         switch source {
         case .exercises:
-            return API.ExercisesViewController.exercises
+            return API.Wger.exercises
         case .exerciseImage(let isMain, let exerciseBase):
-            return API.ExercisesViewController.exerciseImage(isMain: isMain, exerciseBase: exerciseBase)
+            return API.Wger.exerciseImage(isMain: isMain, exerciseBase: exerciseBase)
+        case .exerciseInfo(let exerciseId):
+            return API.Wger.exerciseInfo(exerciseId: exerciseId)
+        case .variation(let variationId):
+            return API.Wger.variation(variationId: variationId)
         }
     }
 }
