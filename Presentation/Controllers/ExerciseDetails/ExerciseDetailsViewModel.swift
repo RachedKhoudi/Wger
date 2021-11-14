@@ -44,7 +44,6 @@ class ExerciseDetailsViewModel: BaseViewModel, ExerciseDetailsViewModelProtocol 
                 self.exerciseInfoItemObserver.accept(exercieInfo)
                 self.updateSectionNumber(exercieInfo: exercieInfo)
                 self.fetchVariationsExercises(variations: exercieInfo.variations)
-                self.stateNotifier.onNext(())
             }, onError: { [weak self] error in
                 guard let self = self else {return}
                 self.errorObserver.onNext(error)
@@ -65,7 +64,9 @@ class ExerciseDetailsViewModel: BaseViewModel, ExerciseDetailsViewModelProtocol 
     }
     
     func fetchVariationsExercises(variations: [Int]?) {
-        guard let ids = variations, ids.count > 0 else { return }
+        guard let ids = variations, ids.count > 0 else {
+            self.stateNotifier.onNext(())
+            return }
         let opQueue = OperationQueue()
         opQueue.maxConcurrentOperationCount = 1
         var variations: [Exercise] = []
@@ -74,6 +75,7 @@ class ExerciseDetailsViewModel: BaseViewModel, ExerciseDetailsViewModelProtocol 
                 variations.append(variation)
                 if variations.count == ids.count {
                     self.variationsItemsObserver.accept(variations)
+                    self.stateNotifier.onNext(())
                 }
             })
         }
@@ -96,10 +98,6 @@ final class FetchVariationOperation: AsyncOperation {
         super.init()
     }
 
-    override func start() {
-        super.start()
-        print("SSSTart")
-    }
     override func main() {
         exerciseDetailsUseCase.fetshVariation(variationId: variationId)
             .subscribe(onNext: {[weak self] variation in
@@ -107,7 +105,6 @@ final class FetchVariationOperation: AsyncOperation {
                 if let completion = self.completion {
                   completion(variation)
                 }
-                print("EEEEnnd")
                 self.finish()
             })
             .disposed(by: self.disposeBag)

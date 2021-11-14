@@ -102,8 +102,10 @@ private extension ExercisesViewController {
     
     func bind() {
         self.viewModel.stateNotifier
-            .subscribe { _ in
+            .subscribe { [weak self] _ in
+                guard let self = self else { return }
                 self.state = .done
+                self.collectionView.reloadData()
             }.disposed(by: self.viewModel.disposeBag)
         
         self.viewModel.errorObserver
@@ -117,14 +119,6 @@ private extension ExercisesViewController {
     }
     
     func bindTableView() {
-        viewModel.exerciseItemsObserver
-            .distinctUntilChanged{$0.count == $1.count}
-            .subscribe(on: MainScheduler.instance)
-            .subscribe (onNext: { _ in
-                self.collectionView.reloadData()
-            })
-            .disposed(by: self.viewModel.disposeBag)
-        
         viewModel.updateImageRowObserver
             .subscribe(on: MainScheduler.instance)
             .subscribe(onNext: { row in

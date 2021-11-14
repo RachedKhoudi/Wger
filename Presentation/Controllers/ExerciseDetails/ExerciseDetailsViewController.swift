@@ -8,6 +8,7 @@
 import UIKit
 import Swinject
 import RxSwift
+import RxCocoa
 import SwiftUI
 
 class ExerciseDetailsViewController: BaseViewController {
@@ -28,6 +29,17 @@ class ExerciseDetailsViewController: BaseViewController {
         return view
     }()
     
+    lazy var emptyLabel: UILabel = {
+        let label: UILabel = UILabel()
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+//        label.sizeToFit()
+        label.text = "Exercise with no images or variations"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        return label
+    }()
+    
     //MARK: - Init
     init(container: Container) {
         self.container = container
@@ -44,13 +56,14 @@ class ExerciseDetailsViewController: BaseViewController {
         self.view.backgroundColor = .white
         configureView()
         bind()
+        self.state = .loading
         self.viewModel.fetshExerciseInfo()
     }
 }
 
 extension ExerciseDetailsViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return viewModel.sectionNumber
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -80,6 +93,17 @@ extension ExerciseDetailsViewController: UICollectionViewDataSource {
 
 extension ExerciseDetailsViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            collectionView.deselectItem(at: indexPath, animated: true)
+            let item = viewModel.variationsItemsObserver.value[indexPath.row]
+            let exerciseDetailsVc = ExerciseDetailsViewController(container: self.container)
+            exerciseDetailsVc.viewModel.exerciceId = item.id
+            exerciseDetailsVc.viewModel.exerciceName = item.name
+            self.navigationController?.pushViewController(exerciseDetailsVc, animated: true)
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
             let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as! SectionHeader
@@ -91,7 +115,17 @@ extension ExerciseDetailsViewController: UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.size.width, height: 60)
+        var height: CGFloat = 60
+        if section == 0 {
+            if viewModel.exerciseInfoItemObserver.value?.images?.count ?? 0 == 0 {
+                height = 0
+            }
+        } else if section == 1 {
+            if viewModel.variationsItemsObserver.value.count == 0 {
+                height = 0
+            }
+        }
+        return CGSize(width: collectionView.frame.size.width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -110,8 +144,16 @@ private extension ExerciseDetailsViewController {
     
     func bind() {
         self.viewModel.stateNotifier
-            .subscribe { _ in
+            .subscribe { [weak self] _ in
+                guard let self = self else { return }
                 self.state = .done
+                self.collectionView.reloadData()
+                if let images = self.viewModel.exerciseInfoItemObserver.value?.images?.count, images > 0 && self.viewModel.variationsItemsObserver.value.count > 0 {
+                    self.collectionView.isHidden = false
+                } else {
+                    self.collectionView.isHidden = true
+                    self.addEmptLabelView()
+                }
             }.disposed(by: self.viewModel.disposeBag)
         
         self.viewModel.errorObserver
@@ -122,22 +164,6 @@ private extension ExerciseDetailsViewController {
                     self.viewModel.fetshExerciseInfo()
                 })
             }.disposed(by: self.viewModel.disposeBag)
-        
-        viewModel.exerciseInfoItemObserver
-            .skip(1)
-            .subscribe(on: MainScheduler.instance)
-            .subscribe (onNext: { _ in
-                self.collectionView.reloadData()
-            })
-            .disposed(by: self.viewModel.disposeBag)
-        
-        viewModel.variationsItemsObserver
-            .skip(1)
-            .subscribe(on: MainScheduler.instance)
-            .subscribe (onNext: { _ in
-                self.collectionView.reloadSections(IndexSet(integer: 1))
-            })
-            .disposed(by: self.viewModel.disposeBag)
     }
     
     func configureView() {
@@ -155,5 +181,11 @@ private extension ExerciseDetailsViewController {
         collectionView.setCollectionViewLayout(layout, animated: false)
         self.view.addSubview(self.collectionView)
         navigationItem.title = viewModel.exerciceName
+    }
+    
+    func addEmptLabelView() {
+        view.addSubview(emptyLabel)
+        emptyLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        emptyLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
     }
 }
