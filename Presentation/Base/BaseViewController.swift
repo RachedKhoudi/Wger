@@ -71,8 +71,8 @@ extension BaseViewController {
     }
     
     func showErrorView(_ error: Error, _ onRetry: @escaping OnRetry) {
-        var networkingError: NetworkingError = .unkown
-        if let error = error as? NetworkingError {
+        var networkingError: Network.Errors = .unkown
+        if let error = error as? Network.Errors {
             networkingError = error
         }
         if let errorView = errorView {

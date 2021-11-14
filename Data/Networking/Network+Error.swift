@@ -1,5 +1,5 @@
 //
-//  NetworkingError.swift
+//  Network+Error.swift
 //  Wger
 //
 //  Created by Rached Khoudi on 13/11/2021.
@@ -9,19 +9,23 @@ import Foundation
 
 // MARK: - Networking Error
 
-enum NetworkingError: Error {
-    
-    //MARK:- Networking errors
-    case serverError
-    case noDataFound
-    case wrongCredentials
-    
-    //MARK:- Credentials errors
-    case missing
-    case wrongFormat
-    
-    case unkown
+extension Network {
+    enum Errors: Error {
+        
+        //MARK:- Networking errors
+        case serverError
+        case noDataFound
+        case wrongCredentials
+        
+        //MARK:- Credentials errors
+        case missing
+        case wrongFormat
+        case encodingError
+        
+        case unkown
+    }
 }
+
 
 // MARK: - Networking Error Localizables
 
@@ -29,7 +33,7 @@ class ErrorLocalizables {
     
     // MARK: - fetch Message
     
-    static func fetchNetworkingMessage(from error: NetworkingError) -> String {
+    static func fetchNetworkingMessage(from error: Network.Errors) -> String {
         switch error {
         case .noDataFound:
             return "error_no_data_found"
