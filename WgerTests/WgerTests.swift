@@ -6,28 +6,93 @@
 //
 
 import XCTest
+import Swinject
+import RxSwift
+import RxCocoa
+import Alamofire
 @testable import Wger
 
 class WgerTests: XCTestCase {
-
+    
+    var session: Session!
+    var container: Container!
+    var assembly: AppAssembly!
+    var disposeBag: DisposeBag!
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        let configuration = URLSessionConfiguration.default
+        session = Alamofire.Session(configuration: configuration)
+        container = Container()
+        assembly = AppAssembly()
+        disposeBag = DisposeBag()
     }
-
+    
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        session = nil
+        container = nil
+        assembly = nil
+        disposeBag = nil
     }
+    
+    func testValidExercisesApiCall() throws {
+        
+        let promise = expectation(description: "Status code: 200")
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        do {
+            // given
+            let url = try API.Wger.exercises.asURLRequest()
+            
+            // when
+            session.request(url)
+                .validate()
+                .responseJSON(completionHandler: { response in
+                    // then
+                    guard response.error == nil else {
+                        if let error = response.error {
+                            XCTFail("Error: \(error.localizedDescription)")
+                        }
+                        return
+                    }
+                    
+                    guard response.response?.statusCode != nil else {
+                        if let error = response.error {
+                            XCTFail("Error: \(error.localizedDescription)")
+                        }
+                        return
+                    }
+                    
+                    switch response.result {
+                    case .success:
+                        do {
+                            promise.fulfill()
+                        }
+                    case .failure:
+                        if let statusCode = response.response?.statusCode {
+                            XCTFail("Error: \(statusCode)")
+                        }
+                        break
+                    }
+                })
+        } catch(let error) {
+            XCTFail("Error: \(error.localizedDescription)")
+        }
+
+        
+        wait(for: [promise], timeout: 5)
     }
+    
+    func testDisplayEmptyView() {
+        // given
+        assembly.assemble(container: container)
+        let exerciseDetailsVc = ExerciseDetailsViewController(container: self.container)
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        // when
+        exerciseDetailsVc.viewModel.exerciseInfoItemObserver.accept(nil)
+        exerciseDetailsVc.viewModel.variationsItemsObserver.accept([])
+        exerciseDetailsVc.viewModel.stateNotifier.onNext(())
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            XCTAssertEqual(exerciseDetailsVc.collectionView.isHidden, true)
         }
     }
-
 }
