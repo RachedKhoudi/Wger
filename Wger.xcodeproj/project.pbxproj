@@ -44,10 +44,12 @@
 		04ADE74E273FE963009DFFB9 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADE74D273FE963009DFFB9 /* AppError.swift */; };
 		04ADE750273FE96D009DFFB9 /* AppLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADE74F273FE96D009DFFB9 /* AppLoader.swift */; };
 		04ADE756273FEA7C009DFFB9 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADE755273FEA7C009DFFB9 /* NetworkingManager.swift */; };
+		04B2CB852741DB84006E3855 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04B2CB842741DB84006E3855 /* Localizable.strings */; };
+		04B2CB872741DBB9006E3855 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2CB862741DBB9006E3855 /* StringExtension.swift */; };
 		04F245E42741CEEE006758D6 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 04F245E32741CEEE006758D6 /* README.md */; };
-		4D598C0E544CF1F544FE9E08 /* Pods_Wger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 383456E4627997CDF632F8F0 /* Pods_Wger.framework */; };
-		DF9C22189FF864625E93C821 /* Pods_WgerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199D44AF28B6E0110D959D91 /* Pods_WgerTests.framework */; };
-		EBBBA35D14F2C07425514CD1 /* Pods_Wger_WgerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E4E6E19E73E439E433404E0 /* Pods_Wger_WgerUITests.framework */; };
+		58A5BECB02F5685B3ED87E0F /* Pods_WgerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F09DE5CDD1426664727C05E5 /* Pods_WgerTests.framework */; };
+		9002B385EDCFC6720253B564 /* Pods_Wger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4474BAF835009FE37CC14A3 /* Pods_Wger.framework */; };
+		F69A101B6F004DE768ADB1A6 /* Pods_Wger_WgerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E2F805D58D1C33EB5F40201 /* Pods_Wger_WgerUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,16 +113,18 @@
 		04ADE74D273FE963009DFFB9 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		04ADE74F273FE96D009DFFB9 /* AppLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLoader.swift; sourceTree = "<group>"; };
 		04ADE755273FEA7C009DFFB9 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
+		04B2CB842741DB84006E3855 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		04B2CB862741DBB9006E3855 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		04F245E32741CEEE006758D6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		199D44AF28B6E0110D959D91 /* Pods_WgerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WgerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2E4E6E19E73E439E433404E0 /* Pods_Wger_WgerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wger_WgerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		383456E4627997CDF632F8F0 /* Pods_Wger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5BBD8384F3AED18C6A561ADD /* Pods-WgerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WgerTests.release.xcconfig"; path = "Target Support Files/Pods-WgerTests/Pods-WgerTests.release.xcconfig"; sourceTree = "<group>"; };
-		7A012C9442EFFFD4C33D0716 /* Pods-Wger-WgerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wger-WgerUITests.debug.xcconfig"; path = "Target Support Files/Pods-Wger-WgerUITests/Pods-Wger-WgerUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		7A432B8C5449DBCA0BF1C8F2 /* Pods-WgerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WgerTests.debug.xcconfig"; path = "Target Support Files/Pods-WgerTests/Pods-WgerTests.debug.xcconfig"; sourceTree = "<group>"; };
-		B192AAB5736F9053A54871C8 /* Pods-Wger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wger.debug.xcconfig"; path = "Target Support Files/Pods-Wger/Pods-Wger.debug.xcconfig"; sourceTree = "<group>"; };
-		C37532F846BE9F94310C6BE4 /* Pods-Wger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wger.release.xcconfig"; path = "Target Support Files/Pods-Wger/Pods-Wger.release.xcconfig"; sourceTree = "<group>"; };
-		D06FA0A13432EC15FBB4F54A /* Pods-Wger-WgerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wger-WgerUITests.release.xcconfig"; path = "Target Support Files/Pods-Wger-WgerUITests/Pods-Wger-WgerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		107E90BC1C64F3F3EC040438 /* Pods-Wger-WgerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wger-WgerUITests.release.xcconfig"; path = "Target Support Files/Pods-Wger-WgerUITests/Pods-Wger-WgerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1ED0E307542B05469E6CEE48 /* Pods-Wger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wger.release.xcconfig"; path = "Target Support Files/Pods-Wger/Pods-Wger.release.xcconfig"; sourceTree = "<group>"; };
+		2F738FE1B8D555B0837C2413 /* Pods-Wger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wger.debug.xcconfig"; path = "Target Support Files/Pods-Wger/Pods-Wger.debug.xcconfig"; sourceTree = "<group>"; };
+		3F06B4B2983D260DDAB13A12 /* Pods-Wger-WgerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wger-WgerUITests.debug.xcconfig"; path = "Target Support Files/Pods-Wger-WgerUITests/Pods-Wger-WgerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4E2F805D58D1C33EB5F40201 /* Pods_Wger_WgerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wger_WgerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C8BF5FD39C1ED91812444DA /* Pods-WgerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WgerTests.release.xcconfig"; path = "Target Support Files/Pods-WgerTests/Pods-WgerTests.release.xcconfig"; sourceTree = "<group>"; };
+		AB2E89985211C3ABDECA5F0B /* Pods-WgerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WgerTests.debug.xcconfig"; path = "Target Support Files/Pods-WgerTests/Pods-WgerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D4474BAF835009FE37CC14A3 /* Pods_Wger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F09DE5CDD1426664727C05E5 /* Pods_WgerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WgerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D598C0E544CF1F544FE9E08 /* Pods_Wger.framework in Frameworks */,
+				9002B385EDCFC6720253B564 /* Pods_Wger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF9C22189FF864625E93C821 /* Pods_WgerTests.framework in Frameworks */,
+				58A5BECB02F5685B3ED87E0F /* Pods_WgerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,18 +148,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBBBA35D14F2C07425514CD1 /* Pods_Wger_WgerUITests.framework in Frameworks */,
+				F69A101B6F004DE768ADB1A6 /* Pods_Wger_WgerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0079ED4357691BE8799A7CD9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D4474BAF835009FE37CC14A3 /* Pods_Wger.framework */,
+				4E2F805D58D1C33EB5F40201 /* Pods_Wger_WgerUITests.framework */,
+				F09DE5CDD1426664727C05E5 /* Pods_WgerTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		04291B7D273FEB7900D74DED /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				04ADE714273FE852009DFFB9 /* Assets.xcassets */,
 				04ADE716273FE852009DFFB9 /* LaunchScreen.storyboard */,
+				04B2CB842741DB84006E3855 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -284,7 +299,7 @@
 				04ADE72C273FE852009DFFB9 /* WgerUITests */,
 				04ADE709273FE850009DFFB9 /* Products */,
 				35923948ED7F84E080039C94 /* Pods */,
-				4900E730F7D8A2D770AA05B9 /* Frameworks */,
+				0079ED4357691BE8799A7CD9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -344,6 +359,7 @@
 				04ADE73D273FE8F3009DFFB9 /* UIViewExtension.swift */,
 				04291B99274004B100D74DED /* UIWindowExtension.swift */,
 				045826F42741B6750031A102 /* UIColorExtension.swift */,
+				04B2CB862741DBB9006E3855 /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -414,24 +430,14 @@
 		35923948ED7F84E080039C94 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B192AAB5736F9053A54871C8 /* Pods-Wger.debug.xcconfig */,
-				C37532F846BE9F94310C6BE4 /* Pods-Wger.release.xcconfig */,
-				7A012C9442EFFFD4C33D0716 /* Pods-Wger-WgerUITests.debug.xcconfig */,
-				D06FA0A13432EC15FBB4F54A /* Pods-Wger-WgerUITests.release.xcconfig */,
-				7A432B8C5449DBCA0BF1C8F2 /* Pods-WgerTests.debug.xcconfig */,
-				5BBD8384F3AED18C6A561ADD /* Pods-WgerTests.release.xcconfig */,
+				2F738FE1B8D555B0837C2413 /* Pods-Wger.debug.xcconfig */,
+				1ED0E307542B05469E6CEE48 /* Pods-Wger.release.xcconfig */,
+				3F06B4B2983D260DDAB13A12 /* Pods-Wger-WgerUITests.debug.xcconfig */,
+				107E90BC1C64F3F3EC040438 /* Pods-Wger-WgerUITests.release.xcconfig */,
+				AB2E89985211C3ABDECA5F0B /* Pods-WgerTests.debug.xcconfig */,
+				9C8BF5FD39C1ED91812444DA /* Pods-WgerTests.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		4900E730F7D8A2D770AA05B9 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				383456E4627997CDF632F8F0 /* Pods_Wger.framework */,
-				2E4E6E19E73E439E433404E0 /* Pods_Wger_WgerUITests.framework */,
-				199D44AF28B6E0110D959D91 /* Pods_WgerTests.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -441,11 +447,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04ADE732273FE852009DFFB9 /* Build configuration list for PBXNativeTarget "Wger" */;
 			buildPhases = (
-				AF2DD57E4E3F4B0FF007AA26 /* [CP] Check Pods Manifest.lock */,
+				63FBA6EDC1A58ACBF176D40E /* [CP] Check Pods Manifest.lock */,
 				04ADE704273FE850009DFFB9 /* Sources */,
 				04ADE705273FE850009DFFB9 /* Frameworks */,
 				04ADE706273FE850009DFFB9 /* Resources */,
-				A6D7CDF66FC7363613EB6E61 /* [CP] Embed Pods Frameworks */,
+				8A763941C08AC14531A61CF1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -460,7 +466,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04ADE735273FE852009DFFB9 /* Build configuration list for PBXNativeTarget "WgerTests" */;
 			buildPhases = (
-				207629403FDEA95312AC216D /* [CP] Check Pods Manifest.lock */,
+				0CE02ED3CE02925314FB37DB /* [CP] Check Pods Manifest.lock */,
 				04ADE71A273FE852009DFFB9 /* Sources */,
 				04ADE71B273FE852009DFFB9 /* Frameworks */,
 				04ADE71C273FE852009DFFB9 /* Resources */,
@@ -479,11 +485,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04ADE738273FE852009DFFB9 /* Build configuration list for PBXNativeTarget "WgerUITests" */;
 			buildPhases = (
-				683290BFDFC702E86DE6BD5E /* [CP] Check Pods Manifest.lock */,
+				F040D24AB7244C844781462A /* [CP] Check Pods Manifest.lock */,
 				04ADE725273FE852009DFFB9 /* Sources */,
 				04ADE726273FE852009DFFB9 /* Frameworks */,
 				04ADE727273FE852009DFFB9 /* Resources */,
-				7D399EBB1BB3F6ECA415E6E5 /* [CP] Embed Pods Frameworks */,
+				947899C964037009B56A2AD9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -542,6 +548,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04B2CB852741DB84006E3855 /* Localizable.strings in Resources */,
 				04ADE718273FE852009DFFB9 /* LaunchScreen.storyboard in Resources */,
 				045826EC274171420031A102 /* ExerciseCollectionViewCell.xib in Resources */,
 				04F245E42741CEEE006758D6 /* README.md in Resources */,
@@ -566,7 +573,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		207629403FDEA95312AC216D /* [CP] Check Pods Manifest.lock */ = {
+		0CE02ED3CE02925314FB37DB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -588,7 +595,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		683290BFDFC702E86DE6BD5E /* [CP] Check Pods Manifest.lock */ = {
+		63FBA6EDC1A58ACBF176D40E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -603,31 +610,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Wger-WgerUITests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Wger-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7D399EBB1BB3F6ECA415E6E5 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Wger-WgerUITests/Pods-Wger-WgerUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Wger-WgerUITests/Pods-Wger-WgerUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wger-WgerUITests/Pods-Wger-WgerUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A6D7CDF66FC7363613EB6E61 /* [CP] Embed Pods Frameworks */ = {
+		8A763941C08AC14531A61CF1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -644,7 +634,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wger/Pods-Wger-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AF2DD57E4E3F4B0FF007AA26 /* [CP] Check Pods Manifest.lock */ = {
+		947899C964037009B56A2AD9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wger-WgerUITests/Pods-Wger-WgerUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wger-WgerUITests/Pods-Wger-WgerUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wger-WgerUITests/Pods-Wger-WgerUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F040D24AB7244C844781462A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -659,7 +666,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Wger-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Wger-WgerUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -682,6 +689,7 @@
 				045826E1274159290031A102 /* ExerciseDetailsViewModel.swift in Sources */,
 				04ADE73E273FE8F3009DFFB9 /* UIViewExtension.swift in Sources */,
 				04291B84273FF31400D74DED /* Exercises.swift in Sources */,
+				04B2CB872741DBB9006E3855 /* StringExtension.swift in Sources */,
 				04291BA02740131C00D74DED /* Environment.swift in Sources */,
 				04291B9E27400F4900D74DED /* Network+API.swift in Sources */,
 				045826F52741B6750031A102 /* UIColorExtension.swift in Sources */,
@@ -869,7 +877,7 @@
 		};
 		04ADE733273FE852009DFFB9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B192AAB5736F9053A54871C8 /* Pods-Wger.debug.xcconfig */;
+			baseConfigurationReference = 2F738FE1B8D555B0837C2413 /* Pods-Wger.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -888,7 +896,7 @@
 		};
 		04ADE734273FE852009DFFB9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C37532F846BE9F94310C6BE4 /* Pods-Wger.release.xcconfig */;
+			baseConfigurationReference = 1ED0E307542B05469E6CEE48 /* Pods-Wger.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -907,7 +915,7 @@
 		};
 		04ADE736273FE852009DFFB9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7A432B8C5449DBCA0BF1C8F2 /* Pods-WgerTests.debug.xcconfig */;
+			baseConfigurationReference = AB2E89985211C3ABDECA5F0B /* Pods-WgerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -929,7 +937,7 @@
 		};
 		04ADE737273FE852009DFFB9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5BBD8384F3AED18C6A561ADD /* Pods-WgerTests.release.xcconfig */;
+			baseConfigurationReference = 9C8BF5FD39C1ED91812444DA /* Pods-WgerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -951,7 +959,7 @@
 		};
 		04ADE739273FE852009DFFB9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7A012C9442EFFFD4C33D0716 /* Pods-Wger-WgerUITests.debug.xcconfig */;
+			baseConfigurationReference = 3F06B4B2983D260DDAB13A12 /* Pods-Wger-WgerUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -971,7 +979,7 @@
 		};
 		04ADE73A273FE852009DFFB9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D06FA0A13432EC15FBB4F54A /* Pods-Wger-WgerUITests.release.xcconfig */;
+			baseConfigurationReference = 107E90BC1C64F3F3EC040438 /* Pods-Wger-WgerUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

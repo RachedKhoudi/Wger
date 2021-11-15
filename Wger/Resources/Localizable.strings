@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  Wger
+
+  Created by Rached Khoudi on 15/11/2021.
+  
+*/
+
+
+"exercises" = "Exercises";
+"error_no_data_found" = "Error data";
+"error_server" = "Error server";
+"enabled" = "enabled";
+"disabled" = "disabled";
+"failed" = "Failed";
+"wrong_format" = "please add an email";
+"wrong_credentials" = "something went wrong";
+"retry" = "Retry";
+"empty_message" = "Exercise with no images or variations";
