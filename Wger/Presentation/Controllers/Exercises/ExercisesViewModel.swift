@@ -54,7 +54,8 @@ class ExercisesViewModel: BaseViewModel, ExercisesViewModelProtocol {
     func fetchExerciseImage(exerciseBases: [Int]) {
         let opQueue = OperationQueue()
         for baseId in exerciseBases {
-            opQueue.addOperation(FetchImageOperation(exercisesUseCase: self.exercisesUseCase, exerciseBase: baseId) { string in
+            opQueue.addOperation(FetchImageOperation(exercisesUseCase: self.exercisesUseCase, exerciseBase: baseId) { [weak self] string in
+                guard let self = self else { return }
                 
                 var cellRow: Int? = nil
                 var exerciseItems = self.exerciseItemsObserver.value
@@ -70,6 +71,38 @@ class ExercisesViewModel: BaseViewModel, ExercisesViewModelProtocol {
                 }
             })
         }
+    }
+    
+//    func fetchExerciseImage(exerciseBases: [Int]) {
+//        let opQueue = OperationQueue()
+//        for baseId in exerciseBases {
+//            opQueue.addOperation {
+//                self.asyncTask(exerciseBase: baseId) { string in
+//                    var cellRow: Int? = nil
+//                    var exerciseItems = self.exerciseItemsObserver.value
+//
+//                    if let row = exerciseItems.firstIndex(where: {$0.exercise.exerciseBase == baseId}) {
+//                        cellRow = row
+//                        exerciseItems[row] = (exercise: self.exerciseItemsObserver.value[row].exercise , image: string)
+//                    }
+//
+//                    self.exerciseItemsObserver.accept(exerciseItems)
+//                    if let row = cellRow {
+//                        self.updateImageRowObserver.onNext(row)
+//                    }
+//                }
+//            }
+//        }
+//    }
+    
+    func asyncTask(exerciseBase: Int, completion: @escaping (String) -> Void) {
+        exercisesUseCase.fetshExercisesMainImages(exerciseBase: exerciseBase)
+            .subscribe(onNext: {exercieImage in
+                if let image = exercieImage.first?.image {
+                  completion(image)
+                }
+            })
+            .disposed(by: self.disposeBag)
     }
 }
 

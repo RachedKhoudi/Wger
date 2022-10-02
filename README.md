@@ -38,3 +38,9 @@ In this feature, I used the same viewController of the last feature *ExercisesVi
 
 ## Base view controller
 I user this object to handle  the view state (error views and loader (show / hide) )
+
+
+##Things to add/fix : 
+- add pull to refresh 
+- fix infinite navigation
+

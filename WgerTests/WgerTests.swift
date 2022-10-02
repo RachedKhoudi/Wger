@@ -42,6 +42,7 @@ class WgerTests: XCTestCase {
             // given
             let url = try API.Wger.exercises.asURLRequest()
             
+            //TODO 1: prevents network request
             // when
             session.request(url)
                 .validate()
@@ -86,13 +87,16 @@ class WgerTests: XCTestCase {
         assembly.assemble(container: container)
         let exerciseDetailsVc = ExerciseDetailsViewController(container: self.container)
 
+        //Fix 1: add loadViewIfNeeded after every creation of viewcontrollers
+        exerciseDetailsVc.loadViewIfNeeded()
+        
         // when
         exerciseDetailsVc.viewModel.exerciseInfoItemObserver.accept(nil)
         exerciseDetailsVc.viewModel.variationsItemsObserver.accept([])
         exerciseDetailsVc.viewModel.stateNotifier.onNext(())
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             XCTAssertEqual(exerciseDetailsVc.collectionView.isHidden, true)
-        }
+//        }
     }
 }
